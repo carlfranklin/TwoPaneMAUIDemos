@@ -1,0 +1,39 @@
+﻿@page "/"
+
+<style>
+    .pane1class {
+        color: darkred;
+    }
+
+    .pane2class {
+        color: blue;
+    }
+
+</style>
+
+<TwoPaneView @ref="twoPaneView"
+             ModeChanged="TwoPaneView_ModeChanged"
+             Pane1Class="pane1class"
+             Pane2Class="pane2class"
+             Pane1Style="background-color:bisque;"
+             Pane2Style="background-color:#cc99ff;">
+    <Pane1>
+        <h1>Hello, .NET MAUI!</h1>
+    </Pane1>
+    <Pane2>
+        <h1>@Mode</h1>
+    </Pane2>
+</TwoPaneView>
+
+@code {
+
+    TwoPaneView twoPaneView { get; set; }
+
+    public string Mode = string.Empty;
+
+    private void TwoPaneView_ModeChanged(Mode mode)
+    {
+        this.Mode = Enum.GetName(typeof(Mode), mode);
+    }
+
+}

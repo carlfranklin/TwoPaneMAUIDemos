@@ -1,0 +1,18 @@
+﻿@if (Mode == Mode.Wide)
+{
+    <div class="@Pane1Class" style="width:50vw;float:left;height:100vh;@Pane1Style;">
+        @Pane1
+    </div>
+    <div class="@Pane2Class" style="width:50vw;float:right;height:100vh;@Pane2Style;">
+        @Pane2
+    </div>
+}
+else if (Mode == Mode.Tall)
+{
+    <div class="@Pane1Class" style="width:100vw;height:50vh;@Pane1Style;">
+        @Pane1
+    </div>
+    <div class="@Pane2Class" style="width:100vw;height:50vh;@Pane2Style;">
+        @Pane2
+    </div>
+}
