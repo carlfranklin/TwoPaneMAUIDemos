@@ -296,32 +296,30 @@ Change *Shared/MainLayout.razor* to the following:
 Remove lines 2 and 25 from *MauiProgram.cs*:
 
 ```c#
+global using Microsoft.Maui.Foldable;
 using Microsoft.Extensions.Logging;
 
-namespace TwoPanelBlazorDemo;
+namespace TwoPaneXAMLDemo;
 
 public static class MauiProgram
 {
-	public static MauiApp CreateMauiApp()
-	{
-		var builder = MauiApp.CreateBuilder();
-		builder
-			.UseMauiApp<App>()
-			.ConfigureFonts(fonts =>
-			{
-				fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
-			});
-
-		builder.Services.AddMauiBlazorWebView();
+    public static MauiApp CreateMauiApp()
+    {
+        var builder = MauiApp.CreateBuilder();
+        builder
+            .UseMauiApp<App>()
+            .ConfigureFonts(fonts =>
+            {
+                fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
+                fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
+            });
 
 #if DEBUG
-		builder.Services.AddBlazorWebViewDeveloperTools();
-		builder.Logging.AddDebug();
+        builder.Logging.AddDebug();
 #endif
-
-
-		return builder.Build();
-	}
+        builder.UseFoldable();
+        return builder.Build();
+    }
 }
 ```
 
